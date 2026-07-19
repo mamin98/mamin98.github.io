@@ -1,152 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammed Amin | Senior .NET Backend Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammed Amin — .NET Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link rel="stylesheet" href="style.css">
+    :root {
+      --bg:        #0d1117;
+      --bg2:       #161b22;
+      --bg3:       #1c2330;
+      --border:    #21262d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --muted:     #8b949e;
+      --text:      #e6edf3;
+      --text-soft: #c9d1d9;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'Inter', sans-serif;
+    }
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 500;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: -1px;
+    }
+
+    .hero-text h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .hero-text .role {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-text .bio {
+      color: var(--text-soft);
+      max-width: 540px;
+      font-size: 14.5px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--bg2);
+    }
+
+    .badge.green {
+      border-color: #238636;
+      color: var(--accent2);
+      background: rgba(35, 134, 54, 0.08);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--bg2);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .social-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .social-links a svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+    }
+
+    .skill-tag.primary {
+      border-color: #1f6feb;
+      color: var(--accent);
+      background: rgba(31, 111, 235, 0.08);
+    }
+
+    /* ── EXPERIENCE ── */
+    .job + .job { margin-top: 40px; }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .job-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .job-company {
+      font-size: 13.5px;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .job-period {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .job ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .job ul li {
+      font-size: 14px;
+      color: var(--text-soft);
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .job ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: 12px;
+      top: 6px;
+    }
+
+    /* ── METRICS ROW ── */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 44px;
+    }
+
+    .metric {
+      background: var(--bg2);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .metric-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--accent);
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: border-color 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-tags span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .contact-item svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--muted);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero-inner { flex-direction: column; gap: 20px; }
+      .metrics { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: 22px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+<div class="wrap">
 
-<header class="hero">
-    <h1>Muhammed Amin</h1>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
 
-    <p class="subtitle">
-        Senior .NET Backend Engineer | SaaS Systems | Clean Architecture | Distributed Systems
-    </p>
+      <div class="avatar">MA</div>
 
-    <p class="meta">
-        Cairo, Egypt • 3.5+ Years Experience • Open to GCC & Europe
-    </p>
+      <div class="hero-text">
+        <h1>Muhammed Amin</h1>
+        <div class="role">// .NET 8 Backend Engineer</div>
+        <p class="bio">
+          Backend engineer specializing in multi-tenant SaaS, distributed systems, and
+          high-performance REST APIs. 3.5+ years building production HR platforms using
+          .NET 8, ABP Framework, Clean Architecture, and RabbitMQ.
+        </p>
 
-    <div class="links">
-        <a href="https://github.com/mamin98" target="_blank" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-        </a>
+        <div class="hero-meta">
+          <span class="badge">📍 Cairo, Egypt</span>
+          <span class="badge">3.5+ yrs exp</span>
+          <span class="badge green">⚡ Open to GCC & Europe</span>
+        </div>
 
-        <a href="https://www.linkedin.com/in/mohamed-amin98" target="_blank" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-        </a>
+        <div class="social-links">
+          <a href="https://github.com/mamin98" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/mohamed-amin98" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="Mohamed_Amin_NET_Backend_Engineer.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM12 17.5l-4-4h2.5V11h3v2.5H16l-4 4z"/></svg>
+            Download CV
+          </a>
+        </div>
+      </div>
 
-        <a href="CV.pdf" target="_blank" aria-label="Download CV">
-            <i class="fa-solid fa-file-arrow-down"></i>
-        </a>
     </div>
-</header>
+  </header>
 
-<section class="card highlight">
-    <h2>About</h2>
-
-    <p>
-        Senior Backend .NET Engineer specializing in building scalable SaaS platforms and enterprise HR systems.
-        Experienced in designing distributed architectures, multi-tenant systems, and high-performance REST APIs
-        using .NET 8, ABP Framework, RabbitMQ, and SQL Server/PostgreSQL.
-    </p>
-
-    <p>
-        Focused on system design, performance optimization, and building production-grade backend systems
-        that serve real business operations at scale.
-    </p>
-</section>
-
-<section class="card">
-    <h2>Core Expertise</h2>
-
-    <div class="grid">
-        <span>.NET 8 / ASP.NET Core</span>
-        <span>Clean Architecture</span>
-        <span>Multi-Tenant SaaS</span>
-        <span>Distributed Systems</span>
-        <span>RabbitMQ</span>
-        <span>REST APIs</span>
-        <span>SQL Server</span>
-        <span>PostgreSQL</span>
-        <span>Redis</span>
-        <span>Azure AD SSO</span>
-        <span>Docker</span>
-        <span>xUnit Testing</span>
+  <!-- METRICS -->
+  <section>
+    <div class="section-label">by the numbers</div>
+    <div class="metrics">
+      <div class="metric">
+        <span class="metric-num">3.5+</span>
+        <div class="metric-label">Years Experience</div>
+      </div>
+      <div class="metric">
+        <span class="metric-num">6+</span>
+        <div class="metric-label">HR Domain Modules Built</div>
+      </div>
+      <div class="metric">
+        <span class="metric-num">40%</span>
+        <div class="metric-label">Report Time Reduced</div>
+      </div>
     </div>
-</section>
 
-<section class="card">
-    <h2>Experience</h2>
+    <!-- SKILLS -->
+    <div class="section-label">core stack</div>
+    <div class="skills-grid">
+      <span class="skill-tag primary">C# / .NET 8</span>
+      <span class="skill-tag primary">ASP.NET Core Web API</span>
+      <span class="skill-tag primary">Clean Architecture</span>
+      <span class="skill-tag primary">ABP Framework</span>
+      <span class="skill-tag primary">RabbitMQ</span>
+      <span class="skill-tag primary">Entity Framework Core</span>
+      <span class="skill-tag">SQL Server</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">Redis</span>
+      <span class="skill-tag">Multi-Tenant SaaS</span>
+      <span class="skill-tag">JWT / IdentityServer</span>
+      <span class="skill-tag">Azure AD SSO</span>
+      <span class="skill-tag">xUnit Testing</span>
+      <span class="skill-tag">OpenAPI / Swagger</span>
+      <span class="skill-tag">Azure DevOps</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">Angular (secondary)</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">experience</div>
 
     <div class="job">
-        <h3>Backend .NET Developer — ASIS Solutions</h3>
-        <span>May 2024 – Present</span>
-
-        <ul>
-            <li>Built core modules of a production-grade multi-tenant HR SaaS platform using .NET 8 & ABP Framework</li>
-            <li>Designed scalable REST APIs across HR domains following Clean Architecture principles</li>
-            <li>Implemented RabbitMQ-based asynchronous workflows for payroll & attendance processing</li>
-            <li>Improved system reliability through automated testing (xUnit) and regression prevention</li>
-        </ul>
+      <div class="job-header">
+        <div>
+          <div class="job-title">Backend .NET Developer</div>
+          <div class="job-company">ASIS Solutions — Cairo, Egypt</div>
+        </div>
+        <div class="job-period">May 2024 – Present</div>
+      </div>
+      <ul>
+        <li>Developed core modules of a production multi-tenant HR SaaS platform serving enterprise clients, using .NET 8 and ABP Framework.</li>
+        <li>Architected and delivered RESTful APIs across 6+ HR domain modules following Clean Architecture, enabling independent module deployment.</li>
+        <li>Implemented RabbitMQ-based async workflows for payroll and attendance processing, decoupling background jobs from the request lifecycle.</li>
+        <li>Introduced xUnit test suite for core payroll and leave modules, achieving 40% coverage and catching regressions before production releases.</li>
+      </ul>
     </div>
 
     <div class="job">
-        <h3>Full Stack .NET Developer — ASIS Solutions</h3>
-        <span>May 2023 – Apr 2024</span>
-
-        <ul>
-            <li>Built and maintained a full-stack HR management system using ASP.NET Core, Angular, and SQL Server</li>
-            <li>Migrated legacy HR modules to Clean Architecture, significantly improving maintainability</li>
-            <li>Optimized SQL Server queries and database indexing strategies for performance improvements</li>
-            <li>Integrated Azure AD SSO for enterprise authentication and secure access control</li>
-            <li>Improved reporting performance by 40% using asynchronous processing techniques</li>
-        </ul>
+      <div class="job-header">
+        <div>
+          <div class="job-title">Full Stack .NET Developer</div>
+          <div class="job-company">ASIS Solutions — Cairo, Egypt</div>
+        </div>
+        <div class="job-period">May 2023 – Apr 2024</div>
+      </div>
+      <ul>
+        <li>Built and maintained a full-stack HR management system using ASP.NET Core, Angular, and SQL Server.</li>
+        <li>Led migration of 4 legacy HR modules to Clean Architecture, reducing average bug fix time from 3 days to under 1 day.</li>
+        <li>Optimized SQL Server queries, indexing strategies, and legacy database operations for measurable performance gains.</li>
+        <li>Integrated Azure AD SSO authentication for enterprise-level access control.</li>
+        <li>Reduced report generation time by 40% by introducing async processing, replacing synchronous blocking calls.</li>
+      </ul>
     </div>
-</section>
 
-<section class="card">
-    <h2>Selected Projects</h2>
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Full Stack .NET Development Intern</div>
+          <div class="job-company">Information Technology Institute (ITI) — Asyut, Egypt</div>
+        </div>
+        <div class="job-period">Nov 2022 – Mar 2023</div>
+      </div>
+      <ul>
+        <li>Completed an intensive 4-month program focused on ASP.NET Core, Angular, REST APIs, and JWT Authentication.</li>
+        <li>Built full-stack web applications following layered architecture and modern software development practices.</li>
+      </ul>
+    </div>
+  </section>
 
-    <div class="project">
+  <!-- PROJECTS -->
+  <section>
+    <div class="section-label">projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
         <h3>Enterprise HR SaaS Platform</h3>
-        <p>
-            Multi-tenant HR system handling payroll, attendance, leave management, and employee operations.
-        </p>
-        <small>.NET 8 • ABP Framework • SQL Server • RabbitMQ • Clean Architecture</small>
-    </div>
+        <p>Multi-tenant HR system handling payroll, attendance, leave management, and employee lifecycle operations at scale.</p>
+        <div class="project-tags">
+          <span>.NET 8</span>
+          <span>ABP Framework</span>
+          <span>RabbitMQ</span>
+          <span>Redis</span>
+          <span>SQL Server</span>
+        </div>
+      </div>
 
-    <div class="project">
+      <div class="project-card">
         <h3>Attendance Management System</h3>
-        <p>
-            Enterprise system for employee attendance tracking and organizational management.
-        </p>
-        <small>ASP.NET Core • SQL Server • REST APIs</small>
+        <p>Full-stack system for employee attendance requests with role-based approval workflows, Clean Architecture, and JWT auth.</p>
+        <div class="project-tags">
+          <span>ASP.NET Core 8</span>
+          <span>Angular</span>
+          <span>EF Core</span>
+          <span>SQL Server</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Legacy HR Module Migration</h3>
+        <p>Migrated 4 legacy HR modules to Clean Architecture — reduced bug fix time from 3 days to under 1 day.</p>
+        <div class="project-tags">
+          <span>Clean Architecture</span>
+          <span>ASP.NET Core</span>
+          <span>SQL Server</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Async Reporting Pipeline</h3>
+        <p>Replaced synchronous blocking report generation with RabbitMQ-based async processing, achieving 40% time reduction.</p>
+        <div class="project-tags">
+          <span>RabbitMQ</span>
+          <span>DevExpress</span>
+          <span>.NET</span>
+        </div>
+      </div>
+
     </div>
-</section>
+  </section>
 
-<section class="card">
-    <h2>Contact</h2>
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">education & background</div>
 
-    <p>
-        <i class="fa-solid fa-envelope"></i>
-        <a href="mailto:mohamed.amin9821@gmail.com">
-            mohamed.amin9821@gmail.com
-        </a>
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">B.Sc. Computers and Information — Information Technology</div>
+          <div class="job-company">Cairo University, Egypt</div>
+        </div>
+        <div class="job-period">2016 – 2020</div>
+      </div>
+    </div>
 
-    <p>
-        <i class="fa-solid fa-phone"></i>
-        <a href="tel:+201119688714">
-            +20 111 968 8714
-        </a>
-    </p>
+    <div class="job" style="margin-top:20px">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Mandatory National Service</div>
+          <div class="job-company">Egyptian Armed Forces</div>
+        </div>
+        <div class="job-period">Apr 2021 – Jun 2022</div>
+      </div>
+    </div>
+  </section>
 
-    <p>
-        <i class="fa-solid fa-location-dot"></i>
+  <!-- CONTACT -->
+  <section>
+    <div class="section-label">contact</div>
+    <div class="contact-row">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:mohamed.amin9821@gmail.com">mohamed.amin9821@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a href="tel:+201119688714">+20 111 968 8714</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Cairo, Egypt
-    </p>
-</section>
+      </div>
+    </div>
+  </section>
 
 </div>
+
+<footer>
+  <div class="wrap">
+    <p>Muhammed Amin · .NET Backend Engineer · Built with HTML & CSS</p>
+  </div>
+</footer>
 
 </body>
 </html>

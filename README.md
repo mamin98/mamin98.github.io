@@ -2,7 +2,7 @@
 
 > Portfolio: [mamin98.github.io](https://mamin98.github.io)
 
-Backend engineer with 3.5+ years building production-grade HR SaaS platforms.
+Backend engineer with 4 years building production-grade HR SaaS platforms.
 Specializing in multi-tenant architecture, distributed systems, and high-performance
 APIs using .NET 8, ABP Framework, and Clean Architecture.
 
